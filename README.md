@@ -3,6 +3,7 @@
 ## Requirements
 
 Set zsh as your login shell:
+
     chsh -s $(which zsh)
 
 ## Install
@@ -16,4 +17,5 @@ Install [rcm](https://github.com/thoughtbot/rcm):
     brew install rcm
 
 Install the dotfiles:
+
     env RCRC=$HOME/dotfiles/rcrc rcup
