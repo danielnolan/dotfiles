@@ -13,7 +13,10 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  workprofile = config user.email "danielnolan@thoughtbot.com"
+  lmsg = log -n 1 --pretty=format:'%s%n%n%b'
 [core]
+  editor = nvim
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
@@ -28,3 +31,12 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[user]
+  name = Daniel Nolan
+  email = danielanolan@gmail.com
+  signingkey = ADDD1EE99190B6FE
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
