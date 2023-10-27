@@ -3,13 +3,7 @@
     build = ':TSUpdate',
     dependencies = {
       'RRethy/nvim-treesitter-endwise',
-      config = function()
-        require('nvim-treesitter.configs').setup {
-          endwise = {
-              enable = true,
-          },
-        }
-      end
+      'nvim-treesitter/nvim-treesitter-textobjects',
     },
     config = function ()
       local configs = require('nvim-treesitter.configs')
@@ -17,7 +11,22 @@
       configs.setup({
         highlight = { enable = true },
         indent = { enable = true },
-        endwise = { enable = true }
+        endwise = { enable = true },
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["am"] = "@function.outer",
+              ["im"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+              ["ir"] = "@block.inner",
+              ["ar"] = "@block.outer",
+            },
+            include_surrounding_whitespace = false,
+          },
+        },
       })
     end
   }
