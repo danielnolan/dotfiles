@@ -28,12 +28,12 @@ vim.opt.smartindent = true
 vim.opt.smartcase = true
 vim.opt.smarttab = true
 vim.opt.swapfile = false
-vim.opt.spellfile= vim.env.HOME .. '/.vim-spell-en.utf-8.add'
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 vim.opt.termguicolors = true
 vim.opt.wildmode = "longest,list:longest,full"
-vim.opt.undodir = vim.env.HOME .. '/.nvim/backup'
-vim.opt.undofile = true
 vim.opt.writebackup = false
+vim.opt.undofile = true
 
 -- Softtabs, 2 spaces
 vim.opt.expandtab = true
