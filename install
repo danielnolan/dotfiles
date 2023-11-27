@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ -z "$USER" ]; then
+    USER=$(id -un)
+fi
+
+echo >&2 "====================================================================="
+echo >&2 " Setting up codespaces environment"
+echo >&2 ""
+echo >&2 " USER        $USER"
+echo >&2 " HOME        $HOME"
+echo >&2 "====================================================================="
+
+cd $HOME
+
+# Make passwordless sudo work
+export SUDO_ASKPASS=/bin/true
+
+rm -rf .oh-my-zsh
+rm -rf .zshrc
+rm -rf .zprofile
+
+sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
+
+sudo wget -q https://apt.thoughtbot.com/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
+echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
+sudo apt-get update
+sudo apt-get install rcm
+rcup
