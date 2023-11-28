@@ -12,7 +12,12 @@ echo >&2 " HOME        $HOME"
 echo >&2 "====================================================================="
 
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
+
 cd $HOME
+
+rm -rf .oh-my-zsh
+rm -rf .zshrc
+rm -rf .zprofile
 
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
@@ -23,13 +28,11 @@ sudo wget -q https://apt.thoughtbot.com/thoughtbot.gpg.key -O /etc/apt/trusted.g
 echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
 sudo apt-get update
 sudo apt-get install rcm
-rm -rf .oh-my-zsh
-rm -rf .zshrc
-rm -rf .zprofile
 rcup -d dotfiles
 
 # Install neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
-ln -ls ./squashfs-root/usr/bin/nvim /usr/bin/nvim
+sudo mv squashfs-root /
+sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
