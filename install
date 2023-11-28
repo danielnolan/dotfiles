@@ -17,17 +17,7 @@ cd $HOME
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
-rm -rf .oh-my-zsh
-rm -rf .zshrc
-rm -rf .zprofile
-
 sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
-
-sudo wget -q https://apt.thoughtbot.com/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
-echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
-sudo apt-get update
-sudo apt-get install rcm
-rcup -d dotfiles
 
 # Install neovim
 git clone https://github.com/neovim/neovim
@@ -35,3 +25,12 @@ cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
+
+rm -rf .oh-my-zsh
+rm -rf .zshrc
+rm -rf .zprofile
+sudo wget -q https://apt.thoughtbot.com/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
+echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
+sudo apt-get update
+sudo apt-get install rcm
+rcup -d dotfiles
