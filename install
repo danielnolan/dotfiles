@@ -23,15 +23,13 @@ sudo wget -q https://apt.thoughtbot.com/thoughtbot.gpg.key -O /etc/apt/trusted.g
 echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
 sudo apt-get update
 sudo apt-get install rcm
-
 rm -rf .oh-my-zsh
 rm -rf .zshrc
 rm -rf .zprofile
 rcup -d dotfiles
 
 # Install neovim
-git clone https://github.com/neovim/neovim
-cd neovim
-git checkout stable
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage --appimage-extract
+ln -ls ./squashfs-root/usr/bin/nvim /usr/bin/nvim
