@@ -11,6 +11,7 @@ echo >&2 " USER        $USER"
 echo >&2 " HOME        $HOME"
 echo >&2 "====================================================================="
 
+mv dotfiles $HOME/dotfiles
 cd $HOME
 
 # Make passwordless sudo work
@@ -26,4 +27,10 @@ sudo wget -q https://apt.thoughtbot.com/thoughtbot.gpg.key -O /etc/apt/trusted.g
 echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
 sudo apt-get update
 sudo apt-get install rcm
-rcup
+rcup -d dotfiles
+
+# Install neovim
+NVIM_VERSION=0.9.4
+sudo apt-get install -y libfuse2
+curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
+chmod a+x $HOME/bin/nvim
