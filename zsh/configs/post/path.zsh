@@ -9,7 +9,7 @@ elif which brew >/dev/null; then
 fi
 
 if [ -d "$HOME/.rbenv" ]; then
-  eval "$(~/.rbenv/bin/rbenv init - zsh)"
+  PATH="$HOME/.rbenv/shims:$PATH"
 fi
 
 # mkdir .git/safe in the root of repositories you trust
