@@ -10,7 +10,7 @@
 
       configs.setup({
         highlight = { enable = true },
-        indent = { enable = true },
+        indent = { enable = false },
         endwise = { enable = true },
         textobjects = {
           select = {
