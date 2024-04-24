@@ -18,8 +18,3 @@ sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
 sudo apt-get update
 sudo apt-get install -y rcm
 yes | rcup -d dotfiles -x README.md -x LICENSE -x Brewfile -x install
-
-# Install neovim
-sudo apt-get install -y libfuse2
-curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod a+x $HOME/bin/nvim
