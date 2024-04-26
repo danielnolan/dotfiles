@@ -9,6 +9,7 @@
       local configs = require('nvim-treesitter.configs')
 
       configs.setup({
+        ensure_installed = "ruby lua javascript python go",
         highlight = { enable = true },
         indent = { enable = false },
         endwise = { enable = true },
