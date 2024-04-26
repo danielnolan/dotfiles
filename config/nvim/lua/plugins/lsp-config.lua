@@ -13,7 +13,7 @@ return {
         function (server_name)
             require("lspconfig")[server_name].setup {}
         end,
-        ["ruby_lsp"] = function()
+        ["ruby_ls"] = function()
           -- textDocument/diagnostic support until 0.10.0 is released
           _timers = {}
           local function setup_diagnostics(client, buffer)
@@ -56,7 +56,7 @@ return {
             })
           end
 
-          require("lspconfig").ruby_lsp.setup({
+          require("lspconfig").ruby_ls.setup({
             autostart = false,
             on_attach = function(client, buffer)
               setup_diagnostics(client, buffer)
