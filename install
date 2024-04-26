@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$USER" ]; then
-    USER=$(id -un)
+  USER=$(id -un)
 fi
 
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
@@ -13,6 +13,9 @@ export SUDO_ASKPASS=/bin/true
 
 # Change shell to zsh
 sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
+
+# Install ag for fast searching
+sudo apt-get install -y silversearcher-ag
 
 # Install rcm for Ubuntu > 19
 sudo apt-get update
