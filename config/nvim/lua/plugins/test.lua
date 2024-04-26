@@ -1,11 +1,9 @@
 return {
-  'klen/nvim-test',
+  'vim-test/vim-test',
   lazy = false,
   config = function()
-    require('nvim-test').setup()
-    require('nvim-test.runners.rspec'):setup {
-      command = "bundle"
-    }
+    vim.cmd('let test#strategy = "neovim"')
+    vim.cmd('let test#neovim#term_position = "vert"')
     vim.keymap.set('n', '<Leader>t', ':TestFile<CR>')
     vim.keymap.set('n', '<Leader>s', ':TestNearest<CR>')
     vim.keymap.set('n', '<Leader>l', ':TestLast<CR>')
