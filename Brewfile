@@ -43,8 +43,6 @@ brew 'overmind'
 brew 'p7zip'
 # Object-relational database system
 brew 'postgresql@14', restart_service: true, link: true
-# Reattach process (e.g., tmux) to background
-brew 'reattach-to-user-namespace'
 # Persistent key-value database, with built-in net interface
 brew 'redis'
 # Search tool like grep and The Silver Searcher
