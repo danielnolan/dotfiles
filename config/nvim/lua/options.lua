@@ -8,7 +8,8 @@ vim.opt.backup = false
 vim.opt.colorcolumn = '80'
 vim.opt.complete:append('kspell')
 vim.opt.completeopt = 'menu'
-vim.opt.grepprg = 'ag'
+vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+vim.opt.grepformat = '%f:%l:%c:%m'
 vim.opt.history = 50
 vim.opt.hidden = true
 vim.opt.inccommand = 'split'
