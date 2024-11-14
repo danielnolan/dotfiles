@@ -2,8 +2,8 @@ return {
   'vim-test/vim-test',
   lazy = false,
   config = function()
-    vim.cmd('let test#strategy = "neovim"')
-    vim.cmd('let test#neovim#term_position = "vert"')
+    vim.g['test#strategy'] = 'neovim'
+    vim.g['test#neovim#term_position'] = 'vert'
     vim.keymap.set('n', '<Leader>t', ':TestFile<CR>')
     vim.keymap.set('n', '<Leader>s', ':TestNearest<CR>')
     vim.keymap.set('n', '<Leader>l', ':TestLast<CR>')
