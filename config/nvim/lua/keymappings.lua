@@ -1,18 +1,5 @@
 -- Key mappings
 
--- Tab completion
--- will insert a tab if at the beginning of the line
--- will use completion if not at beginnning
-vim.keymap.set('i', '<Tab>', function()
-  local col = vim.fn.col(".") - 1
-  if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-    return "<Tab>"
-  else
-    return "<C-p>"
-  end
-end, {expr = true})
-vim.keymap.set('i', '<S-Tab>', '<C-n>')
-
 -- easily flip back to previous file
 vim.keymap.set('n', '<Leader><Leader>', '<C-^>')
 
