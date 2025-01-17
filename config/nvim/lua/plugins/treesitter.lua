@@ -1,6 +1,7 @@
   return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    lazy = false,
     dependencies = {
       'RRethy/nvim-treesitter-endwise',
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -9,7 +10,16 @@
       local configs = require('nvim-treesitter.configs')
 
       configs.setup({
-        ensure_installed = { "ruby", "lua", "javascript", "python", "go", "html" },
+        ensure_installed = {
+          "ruby",
+          "lua",
+          "javascript",
+          "python",
+          "go",
+          "html",
+          "jsonc",
+          "json"
+        },
         highlight = { enable = true },
         indent = { enable = false },
         endwise = { enable = true },
