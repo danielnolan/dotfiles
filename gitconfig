@@ -13,7 +13,7 @@
   co = checkout
   pf = push --force-with-lease
   st = status
-  workprofile = config user.email "danielnolan@thoughtbot.com"
+  workprofile = config user.email "daniel.nolan@andros.co"
   lmsg = log -n 1 --pretty=format:'%s%n%n%b'
 [core]
   editor = nvim

@@ -1,74 +1,10 @@
 return {
   {
-    'williamboman/mason.nvim',
-    lazy = false,
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    lazy = false,
-    config = function()
-      require('mason').setup()
-      require('mason-lspconfig').setup()
-      require('mason-lspconfig').setup_handlers {
-        function (server_name)
-            require("lspconfig")[server_name].setup {}
-        end,
-        ["ruby_lsp"] = function()
-          -- textDocument/diagnostic support until 0.10.0 is released
-          _timers = {}
-          local function setup_diagnostics(client, buffer)
-            if require("vim.lsp.diagnostic")._enable then
-              return
-            end
-
-            local diagnostic_handler = function()
-              local params = vim.lsp.util.make_text_document_params(buffer)
-              client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-                if err then
-                  local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-                  vim.lsp.log.error(err_msg)
-                end
-                if not result then
-                  return
-                end
-                vim.lsp.diagnostic.on_publish_diagnostics(
-                  nil,
-                  vim.tbl_extend("keep", params, { diagnostics = result.items }),
-                  { client_id = client.id }
-                )
-              end)
-            end
-
-            diagnostic_handler() -- to request diagnostics on buffer when first attaching
-
-            vim.api.nvim_buf_attach(buffer, false, {
-              on_lines = function()
-                if _timers[buffer] then
-                  vim.fn.timer_stop(_timers[buffer])
-                end
-                _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
-              end,
-              on_detach = function()
-                if _timers[buffer] then
-                  vim.fn.timer_stop(_timers[buffer])
-                end
-              end,
-            })
-          end
-
-          require("lspconfig").ruby_lsp.setup({
-            autostart = false,
-            on_attach = function(client, buffer)
-              setup_diagnostics(client, buffer)
-            end,
-          })
-        end
-      }
-    end
-  },
-  {
     'neovim/nvim-lspconfig',
+    lazy = false,
     config = function()
+      local lspconfig = require('lspconfig')
+      lspconfig.ruby_lsp.setup({})
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
       vim.api.nvim_create_autocmd('LspAttach', {
