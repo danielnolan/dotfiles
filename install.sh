@@ -6,6 +6,9 @@ fi
 
 cd $HOME
 
+# remove oh my zsh
+uninstall_oh_my_zsh
+
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
