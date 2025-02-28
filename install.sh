@@ -12,6 +12,9 @@ uninstall_oh_my_zsh
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
+# Set default shell to zsh in devcontainer
+sudo chsh -s /bin/zsh vscode
+
 # Install ripgrep for fast searching
 sudo apt-get install ripgrep
 
