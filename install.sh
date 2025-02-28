@@ -12,8 +12,8 @@ uninstall_oh_my_zsh
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
-# Install ag for fast searching
-sudo apt-get install -y silversearcher-ag
+# Install ripgrep for fast searching
+sudo apt-get install ripgrep
 
 # Install rcm for Ubuntu > 19
 sudo apt-get update
