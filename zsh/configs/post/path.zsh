@@ -1,15 +1,15 @@
 # ensure dotfiles bin directory is loaded first
 PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
-# Try loading ASDF from the regular home dir location
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
-elif which brew >/dev/null; then
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
-fi
-
 if [ -d "$HOME/.rbenv" ]; then
   PATH="$HOME/.rbenv/shims:$PATH"
+fi
+
+if [ -d "$HOME/.asdf" ]; then
+  # set asdf data dir
+  export ASDF_DATA_DIR="$HOME/.asdf"
+  # add data dir to path
+  export PATH="$ASDF_DATA_DIR/shims:$PATH"
 fi
 
 # mkdir .git/safe in the root of repositories you trust
