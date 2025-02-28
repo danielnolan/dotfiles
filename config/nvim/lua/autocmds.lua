@@ -31,10 +31,3 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   pattern = '*.jbuilder',
   command = 'set filetype=ruby'
 })
-
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-  pattern = '*/network_insights/**',
-  callback = function()
-    vim.g['test#ruby#rspec#executable'] = 'dx/exec rspec'
-  end
-})
