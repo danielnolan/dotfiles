@@ -2,7 +2,7 @@
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
 # completion; use cache if updated within 24h
-autoload -Uz compinit
+autoload -Uz compinit && compinit
 if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
   compinit -d $HOME/.zcompdump;
 else
