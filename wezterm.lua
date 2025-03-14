@@ -44,6 +44,12 @@ config.keys = {
     action = wezterm.action.PaneSelect {
       mode = 'SwapWithActive',
     },
+  },
+   -- activate copy mode or vim mode
+  {
+    key = 'Enter',
+    mods = 'LEADER',
+    action = wezterm.action.ActivateCopyMode
   }
 }
 -- you can put the rest of your Wezterm config here
