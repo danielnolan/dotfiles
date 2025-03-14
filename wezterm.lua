@@ -12,7 +12,6 @@ config.color_scheme = 'Gruvbox Dark (Gogh)'
 config.font = wezterm.font 'Hack Nerd Font Mono'
 config.font_size = 14.0
 
-
 config.leader = { key = 'f', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- splitting
@@ -47,10 +46,27 @@ config.keys = {
   },
    -- activate copy mode or vim mode
   {
-    key = 'Enter',
+    key = '[',
     mods = 'LEADER',
     action = wezterm.action.ActivateCopyMode
-  }
+  },
+  -- create a new tab
+  {
+    key = 'c',
+    mods = 'LEADER',
+    action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+  },
+  -- navigate tabs like tmux
+  {
+    key = 'n',
+    mods = 'LEADER',
+    action = wezterm.action.ActivateTabRelative(1),
+  },
+  {
+    key = 'p',
+    mods = 'LEADER',
+    action = wezterm.action.ActivateTabRelative(-1),
+  },
 }
 -- you can put the rest of your Wezterm config here
 smart_splits.apply_to_config(config, {
