@@ -1,3 +1,0 @@
-EXCLUDES="*.md LICENSE install"
-DOTFILES_DIRS="$HOME/dotfiles"
-COPY_ALWAYS="git_template/HEAD"
