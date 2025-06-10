@@ -20,5 +20,5 @@ sudo apt-get install ripgrep
 
 # Install rcm for Ubuntu > 19
 sudo apt-get update
-sudo apt-get install -y rcm
-yes | rcup -d dotfiles -x README.md -x LICENSE -x Brewfile -x install
+sudo apt-get install -y yadm
+yadm clone -f https://github.com/danielnolan/dotfiles
