@@ -7,13 +7,13 @@ fi
 cd $HOME
 
 # remove oh my zsh
-uninstall_oh_my_zsh
+~/.oh-my-zsh/tools/uninstall.sh
+rm .zshrc
+rm .zshenv
+rm .zprofile
 
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
-
-# Set default shell to zsh in devcontainer
-sudo chsh -s /bin/zsh vscode
 
 # Install ripgrep for fast searching
 sudo apt-get install ripgrep
