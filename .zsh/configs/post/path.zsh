@@ -12,6 +12,8 @@ if [ -d "$HOME/.asdf" ]; then
   export PATH="$ASDF_DATA_DIR/shims:$PATH"
 fi
 
+[ -f ~/.config/mise/config.toml ] && eval "$(mise activate zsh)"
+
 # mkdir .git/safe in the root of repositories you trust
 PATH=".git/safe/../../bin:$PATH"
 
