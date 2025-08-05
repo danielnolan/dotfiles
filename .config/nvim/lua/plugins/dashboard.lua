@@ -25,7 +25,7 @@ return {
           {
             desc = ' dotfiles',
             group = 'Number',
-            action = 'Telescope find_files cwd=~',
+            action = 'Telescope find_files cwd=~/',
             key = 'd',
           },
         },
