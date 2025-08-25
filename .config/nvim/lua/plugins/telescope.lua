@@ -21,6 +21,10 @@ return {
 
     telescope.setup {
       defaults = {
+        sorting_strategy = "ascending",  -- display results top->bottom
+        layout_config = {
+          prompt_position = "top"  -- search bar at the top
+        },
         vimgrep_arguments = vimgrep_arguments,
       },
       pickers = {
@@ -29,7 +33,7 @@ return {
         },
 
         find_files = {
-          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
         },
       },
     }
