@@ -26,6 +26,12 @@ return {
           prompt_position = "top"  -- search bar at the top
         },
         vimgrep_arguments = vimgrep_arguments,
+        mappings = {
+          i = {
+            ["<C-j>"] = "move_selection_next",
+            ["<C-k>"] = "move_selection_previous",
+          },
+        },
       },
       pickers = {
         buffers = {
