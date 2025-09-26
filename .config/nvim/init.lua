@@ -31,6 +31,7 @@ require('lazy').setup('plugins', {
   },
 })
 
-require('options')
-require('keymappings')
-require('autocmds')
+require('config.options')
+require('config.keymappings')
+require('config.autocmds')
+require('config.lsp')
