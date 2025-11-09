@@ -1,25 +1,7 @@
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-# Load omarchy-zsh configuration
-if [[ -d /usr/share/omarchy-zsh/conf.d ]]; then
-  for config in /usr/share/omarchy-zsh/conf.d/*.zsh; do
-    [[ -f "$config" ]] && source "$config"
-  done
-fi
-
-# Load omarchy-zsh functions and aliases
-if [[ -d /usr/share/omarchy-zsh/functions ]]; then
-  for func in /usr/share/omarchy-zsh/functions/*.zsh; do
-    [[ -f "$func" ]] && source "$func"
-  done
-fi
-
-if [[ -d ~/.zsh/functions ]]; then
-  for function in ~/.zsh/functions/*; do
-    source $function
-  done
-fi
+# load custom executable functions
+for function in ~/.zsh/functions/*; do
+  source $function
+done
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
@@ -54,3 +36,21 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# set cd path for easier file system navigation
+setopt auto_cd
+cdpath=($HOME $HOME/Work)
+# set higher ulimit to prvent too many open files error
+ulimit -n 10240
+# show completion menu on successive tab press
+setopt auto_menu
+
+# case insensitive tab completion
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# tab completion becomes a menu which highlights selections
+# and allows you to move horizontally across menu rows
+zstyle ':completion:*:*:*:*:*' menu select
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
