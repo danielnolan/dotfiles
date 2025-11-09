@@ -1,6 +1,9 @@
+# remove g as alias if defined
+if whence -w g | grep "aiias"; then
+  unalias g
+fi
 # No arguments: `git status`
 # With arguments: acts like `git`
-unalias g
 g() {
   if [[ $# -gt 0 ]]; then
     git "$@"
