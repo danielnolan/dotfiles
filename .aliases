@@ -15,7 +15,3 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-# Prefer nvim over vim if available
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-fi
