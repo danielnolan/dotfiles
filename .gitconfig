@@ -33,8 +33,8 @@
   colorMoved = zebra
 [user]
   name = Daniel Nolan
-  email = danielanolan@gmail.com
-  signingkey = ADDD1EE99190B6FE
+  email = me@danielnolan.com
+	signingkey = 0EABBF238B16E587
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
