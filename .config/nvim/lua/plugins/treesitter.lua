@@ -4,12 +4,13 @@
     lazy = false,
     dependencies = {
       'RRethy/nvim-treesitter-endwise',
-      'nvim-treesitter/nvim-treesitter-textobjects',
+      {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+      },
     },
     config = function ()
-      local configs = require('nvim-treesitter.configs')
-
-      configs.setup({
+      require'nvim-treesitter'.setup {
         ensure_installed = {
           "ruby",
           "lua",
@@ -38,6 +39,6 @@
             include_surrounding_whitespace = false,
           },
         },
-      })
+      }
     end
   }
