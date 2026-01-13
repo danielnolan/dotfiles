@@ -37,5 +37,3 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-eval "$(/home/daniel/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
