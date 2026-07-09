@@ -6,12 +6,6 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'saadparwaiz1/cmp_luasnip',
-      {
-        'zbirenbaum/copilot-cmp',
-         config = function ()
-          require("copilot_cmp").setup()
-        end
-      }
     },
     config = function()
       local cmp_status_ok, cmp = pcall(require, "cmp")
@@ -79,7 +73,6 @@ return {
               luasnip = "[Snippet]",
               buffer = "[Buffer]",
               path = "[Path]",
-              copilot = "[Copilot]",
             })[entry.source.name]
             return vim_item
           end,
@@ -99,8 +92,6 @@ return {
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
-            elseif require("copilot.suggestion").is_visible() then
-              require("copilot.suggestion").accept()
             elseif luasnip.expandable() then
               luasnip.expand()
             elseif luasnip.expand_or_jumpable() then
@@ -128,7 +119,6 @@ return {
           }),
         },
         sources = cmp.config.sources({
-          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'buffer' },
