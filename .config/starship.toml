@@ -14,7 +14,7 @@ $git_status\
 [](fg:color_aqua bg:color_bg3)\
 $docker_context\
 [ ](fg:color_bg3)\
-$line_break$character"""
+$character"""
 
 palette = 'terminal'
 
@@ -98,9 +98,6 @@ format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 symbol = ""
 style = "bg:color_bg3"
 format = '[[ $symbol( $context) ](fg:color_blue bg:color_bg3)]($style)'
-
-[line_break]
-disabled = false
 
 [character]
 disabled = false
