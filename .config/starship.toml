@@ -45,7 +45,7 @@ Raspbian = "󰐿"
 Mint = "󰣭"
 Macos = "󰀵"
 Manjaro = ""
-Linux = "󰌽"
+Linux = "󰣇"                # also Omarchy (ID=omarchy isn't known to starship)
 Gentoo = "󰣨"
 Fedora = "󰣛"
 Alpine = ""
