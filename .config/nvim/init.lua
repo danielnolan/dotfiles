@@ -32,6 +32,8 @@ require('lazy').setup('plugins', {
 })
 
 require('config.options')
+-- after options, so light themes can set background=light
+require('config.theme').apply()
 require('config.keymappings')
 require('config.autocmds')
 require('config.lsp')

@@ -5,7 +5,7 @@ if ! command -v tmux > /dev/null 2>&1; then
   if command -v apt > /dev/null 2>&1; then
     sudo apt-get -y install tmux
   elif command -v yay > /dev/null 2>&1; then
-    yay -S tmux
+    yay -S --needed --noconfirm tmux
   fi
 else
   echo "tmux is all ready installed"

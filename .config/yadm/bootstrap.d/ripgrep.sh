@@ -5,7 +5,7 @@ if ! command -v rg > /dev/null 2>&1; then
   if command -v apt > /dev/null 2>&1; then
     sudo apt-get -y install ripgrep
   elif command -v yay > /dev/null 2>&1; then
-    yay -S ripgrep
+    yay -S --needed --noconfirm ripgrep
   fi
 else
   echo "ripgrep is already installed"

@@ -1,10 +1,97 @@
 onboarding = false
+# Keys mirror ~/.tmux.conf (prefix C-f, | and - splits, h/j/k/l panes).
+# Layout based on Omarchy's herdr config:
+# tmux session -> herdr workspace, tmux window -> herdr tab, tmux pane -> herdr pane
+
+[theme]
+# Use the terminal's own palette, so it follows the Omarchy theme through
+# Ghostty and the Windows Terminal / iTerm scheme everywhere else.
+name = "terminal"
+auto_switch = false
+
+[theme.custom]
+# Tab bar sits on the terminal background (see-through under Glassy windows);
+# the active tab is black text on the accent.
+panel_bg = "reset"
+surface_dim = "black"
+
+[terminal]
+# Like -c "#{pane_current_path}" on every split, window, and session
+new_cwd = "follow"
 
 [keys]
 prefix = "ctrl+f"
-split_vertical   = "prefix+|"
-split_horizontal = "prefix+minus"
 
-[theme]
-name = "gruvbox"
-auto_switch = false
+# Config and help
+reload_config = "prefix+r"
+help = "prefix+?"
+detach = "prefix+d"
+
+# Copy mode
+copy_mode = "prefix+["
+
+# Panes (tmux: bind | split-window -h, bind - split-window -v)
+# alt+enter is fullscreen in Windows Terminal, so the prefix keys are the
+# ones that work everywhere.
+split_vertical = ["prefix+|", "alt+shift+enter"]
+split_horizontal = ["prefix+minus", "alt+enter"]
+close_pane = ["prefix+x", "alt+esc"]
+zoom = "prefix+z"
+last_pane = "prefix+;"
+
+# tmux: bind-key h/j/k/l select-pane
+focus_pane_left = ["prefix+h", "ctrl+alt+left"]
+focus_pane_down = ["prefix+j", "ctrl+alt+down"]
+focus_pane_up = ["prefix+k", "ctrl+alt+up"]
+focus_pane_right = ["prefix+l", "ctrl+alt+right"]
+
+resize_mode = ["prefix+ctrl+left", "prefix+ctrl+down", "prefix+ctrl+up", "prefix+ctrl+right"]
+
+# tmux: bind -r H/J/K/L resize-pane
+resize_pane_left = ["prefix+shift+h", "ctrl+alt+shift+left"]
+resize_pane_down = ["prefix+shift+j", "ctrl+alt+shift+down"]
+resize_pane_up = ["prefix+shift+k", "ctrl+alt+shift+up"]
+resize_pane_right = ["prefix+shift+l", "ctrl+alt+shift+right"]
+
+rename_pane = "prefix+shift+o"
+
+# Windows -> tabs (tmux: C-h/C-l previous/next window, & kill-window)
+new_tab = "prefix+c"
+rename_tab = "prefix+,"
+close_tab = "prefix+&"
+switch_tab = ["prefix+1..9", "alt+1..9"]
+previous_tab = ["prefix+ctrl+h", "prefix+p", "alt+left"]
+next_tab = ["prefix+ctrl+l", "prefix+n", "alt+right"]
+
+move_tab_previous = "alt+shift+left"
+move_tab_next = "alt+shift+right"
+
+# Sessions -> workspaces
+new_workspace = "prefix+shift+c"
+rename_workspace = "prefix+shift+r"
+close_workspace = "prefix+shift+x"
+previous_workspace = ["prefix+shift+p", "alt+up"]
+next_workspace = ["prefix+shift+n", "alt+down"]
+
+[ui]
+accent = "blue"
+
+# Single-line dividers between panes, no outer frame or scrollbars, like tmux
+pane_gaps = false
+pane_outer_borders = false
+pane_scrollbars = false
+
+# kill-window and kill-session never asked
+confirm_close = false
+
+# automatic-rename gave windows a name without prompting
+prompt_new_tab_name = false
+
+# set -g mouse on
+mouse_capture = true
+
+tab_bar_right = [{ type = "zoom" }, { type = "hostname" }]
+
+# Shown in Hyprland's group bar; resolves on the server so remote sessions
+# name the remote host.
+window_title = "{hostname}: {workspace}"

@@ -5,7 +5,7 @@ if ! command -v zsh > /dev/null 2>&1; then
   if command -v apt > /dev/null 2>&1; then
     sudo apt-get -y install zsh
   elif command -v yay > /dev/null 2>&1; then
-    yay -S zsh
+    yay -S --needed --noconfirm zsh
   fi
 else
   echo "zsh is already installed"
