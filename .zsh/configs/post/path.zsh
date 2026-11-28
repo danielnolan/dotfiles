@@ -12,7 +12,11 @@ if [ -d "$HOME/.asdf" ]; then
   export PATH="$ASDF_DATA_DIR/shims:$PATH"
 fi
 
-[ -f ~/.config/mise/config.toml ] && eval "$(mise activate zsh)"
+# ~/.local/bin is where the mise install script puts it; added again below so it stays first
+PATH="$HOME/.local/bin:$PATH"
+if command -v mise >/dev/null && [ -f ~/.config/mise/config.toml ]; then
+  eval "$(mise activate zsh)"
+fi
 
 # mkdir .git/safe in the root of repositories you trust
 PATH=".git/safe/../../bin:$PATH"
